@@ -1,3 +1,5 @@
+require 'pry'
+
 class Cat
   # code goes here
 
@@ -6,10 +8,10 @@ class Cat
 
   @@all = []
 
-  def initialize (name,owner,mood="nervous")
-    @name=name
-    @owner=owner
-    @mood =mood
+  def initialize (name, owner, mood = "nervous")
+    @name = name
+    @owner = owner
+    @mood = mood
     @@all << self
   end
 
@@ -17,5 +19,6 @@ class Cat
     @@all
   end
 
-
 end
+# binding.pry
+# 0
