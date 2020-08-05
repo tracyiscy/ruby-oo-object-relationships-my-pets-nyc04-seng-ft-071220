@@ -5,6 +5,9 @@ class Owner
 
   attr_reader :species, :name
   attr_accessor 
+#define an instance 
+# Jason = Owner.new("Jason")
+#Jason.cats = #jason"s cats not all the cats
 
   @@all = []
   @@count = 0
@@ -35,7 +38,25 @@ class Owner
   end
 
   def cats
-    Cat.all
-    binding.pry
+    # cat_arr = []
+    # Cat.all.each{|cat|
+    #   if 
+    #     cat.owner.name == @name
+    #     cat_arr << cat
+    #   end
+    #   # binding.pry
+    # }
+    # cat_arr
+    Cat.all.select{|cat|
+      cat.owner == self
+      # binding.pry
+    }
+  end
+
+  def dogs
+    Dog.all.select{|dog|
+      dog.owner == self
+      binding.pry
+    }
   end
 end
