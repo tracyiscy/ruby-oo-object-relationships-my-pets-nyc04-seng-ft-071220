@@ -5,9 +5,6 @@ class Owner
 
   attr_reader :species, :name
   attr_accessor 
-#define an instance 
-# Jason = Owner.new("Jason")
-#Jason.cats = #jason"s cats not all the cats
 
   @@all = []
   @@count = 0
@@ -32,31 +29,56 @@ class Owner
   end
 
   def self.reset_all
-    #clear every out from the array
     @@all.clear
     @@count = 0
   end
 
   def cats
-    # cat_arr = []
-    # Cat.all.each{|cat|
-    #   if 
-    #     cat.owner.name == @name
-    #     cat_arr << cat
-    #   end
-    #   # binding.pry
-    # }
-    # cat_arr
     Cat.all.select{|cat|
       cat.owner == self
-      # binding.pry
     }
   end
 
   def dogs
     Dog.all.select{|dog|
       dog.owner == self
-      binding.pry
     }
   end
+
+  def buy_cat(name)
+    Cat.new(name, self)
+ end
+
+  def buy_dog(name)
+    Dog.new(name, self)
+  end
+
+  def walk_dogs
+    self.dogs.each{|dog|
+      dog.mood = "happy"
+    }
+  end
+
+  def feed_cats
+    self.cats.each{|cat|
+      cat.mood = "happy"
+    }
+  end
+
+  def sell_pets
+    all_pets = self.cats + self.dogs
+    all_pets.each{|pet|
+      pet.mood = "nervous"
+      pet.owner = nil
+    }
+    # binding.pry
+
+  end
+
+  def list_pets
+    "I have #{self.dogs.count} dog(s), and #{self.cats.count} cat(s)."
+  end
 end
+
+# binding.pry
+# 0
