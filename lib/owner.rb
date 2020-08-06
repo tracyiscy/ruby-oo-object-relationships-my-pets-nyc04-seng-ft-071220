@@ -34,13 +34,13 @@ class Owner
   end
 
   def cats
-    Cat.all.select{|cat|
+    Cat.all.select { |cat|
       cat.owner == self
     }
   end
 
   def dogs
-    Dog.all.select{|dog|
+    Dog.all.select { |dog|
       dog.owner == self
     }
   end
@@ -54,20 +54,20 @@ class Owner
   end
 
   def walk_dogs
-    self.dogs.each{|dog|
+    self.dogs.each { |dog|
       dog.mood = "happy"
     }
   end
 
   def feed_cats
-    self.cats.each{|cat|
+    self.cats.each { |cat|
       cat.mood = "happy"
     }
   end
 
   def sell_pets
     all_pets = self.cats + self.dogs
-    all_pets.each{|pet|
+    all_pets.each { |pet|
       pet.mood = "nervous"
       pet.owner = nil
     }
